@@ -22,20 +22,18 @@ const tempoObjetivo4 = new Date("2025-10-01T00:00:00");
 const tempos = [tempoObjetivo1,tempoObjetivo2,tempoObjetivo3,tempoObjetivo4];
 
 function atualizaCronometro(){
-for (let i= 0; i <contadores.length; i++){
-contadores[0].textContent = calculaTempo(tempos[0]);
+    for (let i= 0; i <contadores.length; i++){
+    document.getElementById("dias"+i).textContent=
+    calculaTempo(tempos[i])[0];
+    document.getElementById("horas"+i).textContent=
+    calculaTempo(tempos[i])[1];
+    document.getElementById("min"+i).textContent=
+    calculaTempo(tempos[i])[2];
+    document.getElementById("seg"+i).textContent=
+    calculaTempo(tempos[i])[3];
+console.log("seg+i")
   }
 }
-for (let i= 0; i <contadores.length; i++){
-contadores[1]. textContent = calculaTempo(tempo[1]);
-}
-for (let i= 0; i <contadores.length; i++){
-contadores[2]. textContent = calculaTempo(tempo[2]);
-}
-for (let i= 0; i <contadores.length; i++){
-contadores[3]. textContent = calculaTempo(tempo[3]);
-}
-
 fuction comecaCronometro(){
 atualizaCronometro();
 setInterval(atualizaCronometro, 1000);
@@ -53,11 +51,12 @@ let dias = Math.floor (horas / 24);
 segundos %= 60;
 minutos %= 60;
 horas %= 24;
+}
 
 if(tempoFinal>0){
-return dias + "dias" + horas + "horas" + minutos + "minutos" + segundos + "segundos";
+return [dias, horas, minutos, segundos];
 } else{
-    return "Prazo Finalizado";
+    return [0,0,0,0];
 }
 contadores [0].textContent = tempoObjetivo1 - tempoAtual;
 contadores[0].textContent = "contagem regressiva";
